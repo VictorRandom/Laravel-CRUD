@@ -7,8 +7,13 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index(){
-        return view('user-list');
+    public function index(Request $request){
+
+        $users = User::get()->all();
+
+        return view('user-list', [
+            'users' => $users,
+        ]);
     }
 
     public function create(){
