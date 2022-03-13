@@ -19,5 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/usuario', [UserController::class, 'index']);
-Route::get('/usuario/cadastrar', [UserController::class, 'create']);
+Route::get('/usuario/register', [UserController::class, 'create']);
 Route::post('/usuario/insert', [UserController::class, 'insert']);
+Route::get('usuario/edit/{id}', [UserController::class, 'edit']);
+Route::put('/usuario/update', [UserController::class, 'update']);

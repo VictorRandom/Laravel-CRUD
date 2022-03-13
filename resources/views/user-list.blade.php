@@ -10,6 +10,7 @@
 </head>
 <body>
 
+    <a href='{{ asset('usuario/register') }}'>Criar Usuário</a>
     <table class="table">
         @foreach($users as $user)
 
@@ -24,11 +25,13 @@
           <tr>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>Editar / Deletar</td>
+            <td>
+                <a href='{{ asset('usuario/edit/' . $user->id ) }}'>Editar</a>
+                / Deletar</td>
           </tr>
         </tbody>
         @endforeach
       </table>
-    
+
 </body>
 </html>

@@ -17,12 +17,17 @@ class UserController extends Controller
     }
 
     public function create(){
-        return view('user-create');
-        
+        $isedit = false;
+        $user = new User();
+        return view('user-create', [
+            'user' => $user,
+            'isedit' => $isedit
+        ]);
+
     }
 
     public function insert(Request $request){
-        
+
         $user = new User();
 
         $user->name = $request->name;
@@ -32,5 +37,16 @@ class UserController extends Controller
         $user->save();
 
         return redirect('usuario');
+    }
+
+    public function edit($id){
+
+        $user = User::find($id);
+        $isedit = true;
+
+        return view('user-create', [
+            'user' => $user,
+            'isedit' => $isedit
+        ]);
     }
 }
