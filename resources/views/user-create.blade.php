@@ -12,10 +12,11 @@
 
 
     @if($isedit == true)
-        <form method="post" action="{{url('usuario/insert')}}">
+        <form method="post" action="{{ url('usuario/update/' . $user->id )}}">
         {{ method_field('PUT') }}
+            <h1>Editar usuário {{ $user->name }}</h1>
     @else
-        <form method="post" action="{{url('usuario/insert')}}">
+        <form method="post" action="{{ url('usuario/insert')}}">
     @endif
     {{ csrf_field() }}
         <div class="form-group">
@@ -32,6 +33,6 @@
           <input name='password' type="password" class="form-control" id="password" value="{{ $user->password }}" placeholder="Password">
         </div>
         <input type="submit" value="Enviar" id='submit' class="btn btn-success mt-3">
-      </form>
+
 </body>
 </html>

@@ -10,6 +10,6 @@
 </head>
 <body>
     <h1>Treino de CRUD</h1>
-    Usuários
+   <a href="/usuario">Usuário</a>
 </body>
 </html>

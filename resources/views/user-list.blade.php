@@ -10,24 +10,32 @@
 </head>
 <body>
 
-    <a href='{{ asset('usuario/register') }}'>Criar Usuário</a>
+    <h1>Lista de Usuários cadastrados</h1>
+
+    <a class="btn btn-secondary" href='{{ asset('usuario/register') }}'>Criar Usuário</a>
     <table class="table">
-        @foreach($users as $user)
 
         <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Ações</th>
-          </tr>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ações</th>
+            </tr>
         </thead>
         <tbody>
-          <tr>
+            @foreach($users as $user)
+            <tr>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>
-                <a href='{{ asset('usuario/edit/' . $user->id ) }}'>Editar</a>
-                / Deletar</td>
+                <a class='btn btn-warning' href='{{ asset('usuario/edit/' . $user->id ) }}'>Editar</a>
+                /
+                <form method="post" action="{{ url('usuario/delete/' . $user->id) }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <input type="submit" value="Deletar" id='submit' class="btn btn-danger mt-3">
+                </form>
+            </td>
           </tr>
         </tbody>
         @endforeach

@@ -49,4 +49,25 @@ class UserController extends Controller
             'isedit' => $isedit
         ]);
     }
+
+    public function update (Request $request){
+        $user = User::find($request->id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $user->password;
+
+        $user->save();
+
+        return redirect('usuario');
+    }
+
+    public function delete (Request $request){
+        $user = User::find($request->id);
+
+        $user->delete();
+
+        return redirect('usuario');
+    }
+
 }
